@@ -1,0 +1,18 @@
+# R and RStudio
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+.Rproj
+.Rapp.history
+
+# OS / IDE junk
+.DS_Store
+Thumbs.db
+
+# Data files (optional — if large or sensitive)
+heart-attack-risk-prediction-dataset.csv
+
+
+# Output artifacts
+outputs/*
