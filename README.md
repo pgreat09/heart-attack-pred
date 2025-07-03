@@ -1,8 +1,8 @@
-# ❤️ Heart Attack Risk Classification
+# Heart Attack Risk Classification
 
 This project analyzes and predicts heart attack risk using real-world health metrics. We explore three supervised learning methods—Logistic Regression, Boosting, and K-Nearest Neighbors (KNN)—to classify individuals into high or low risk categories.
 
-## 📁 Project Overview
+## Project Overview
 
 - **Dataset**: Cleaned Kaggle dataset with 25 health indicators
 - **Goal**: Predict binary outcome: Heart Attack Risk (0 = Low, 1 = High)
@@ -11,7 +11,7 @@ This project analyzes and predicts heart attack risk using real-world health met
   - Gradient Boosting
   - K-Nearest Neighbors (KNN)
 
-## 🔍 Key Techniques
+## Key Techniques
 
 - Principal Component Analysis (PCA)
 - Correlation Analysis
@@ -19,7 +19,7 @@ This project analyzes and predicts heart attack risk using real-world health met
 - Dimensionality Reduction for KNN performance
 - Confusion matrix interpretation with attention to medical tradeoffs
 
-## 📊 Results Summary
+## Results Summary
 
 | Model                   | Test Error Rate | AUC     |
 |------------------------|-----------------|---------|
@@ -30,10 +30,24 @@ This project analyzes and predicts heart attack risk using real-world health met
 
 Boosting was chosen for final deployment, but further work is suggested to reduce false negatives (critical in medical applications).
 
-## 📂 Repo Structure
+## Repo Structure
+HeartAttackRiskPrediction/
+├── data/                  # (optional) contains raw or sample datasets (excluded from Git)
+├── scripts/               # modular R scripts for each stage of the analysis
+│   ├── 01_data_cleaning.R
+│   ├── 02_pca_analysis.R
+│   ├── 03_logistic_regression.R
+│   ├── 04_boosting_model.R
+│   └── 05_knn_classification.R
+├── outputs/               # stores generated visualizations, confusion matrices, and other artifacts
+├── final_report.pdf       # the full write-up in PDF form (knit from R Markdown)
+├── requirements.R         # script to install all necessary packages
+├── .gitignore             # defines files/folders Git should ignore
+└── README.md              # this document
 
 
-## 🔧 Requirements
+## Requirements
+Run requirements.R to install all required packages or see below for packages used in this project.
 
 ```{r, packages}
 library(readr)
