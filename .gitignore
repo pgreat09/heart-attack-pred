@@ -10,8 +10,8 @@
 .DS_Store
 Thumbs.db
 
-# Data files (optional — if large or sensitive)
-heart-attack-risk-prediction-dataset.csv
+# Data files
+data/*.csv
 
 
 # Output artifacts
