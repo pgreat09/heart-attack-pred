@@ -6,13 +6,17 @@
 .Rproj
 .Rapp.history
 
-# OS / IDE junk
+# macOS and Windows system files
 .DS_Store
 Thumbs.db
 
 # Data files
 data/*.csv
-
+data/*.xlsx
+data/*.rds
+data/*.json
+!data/.gitkeep  # empty folder placeholder
 
 # Output artifacts
 outputs/*
+!outputs/.gitkeep  # empty folder placeholder
