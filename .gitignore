@@ -12,7 +12,7 @@ Thumbs.db
 
 # Data files
 data/*.csv
-!data/heart.csv
+!data/heart-attack-risk-prediction-dataset.csv
 data/*.xlsx
 data/*.rds
 data/*.json
