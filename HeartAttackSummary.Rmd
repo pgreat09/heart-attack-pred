@@ -1,0 +1,87 @@
+---
+title: '❤️ Heart Attack Risk Classification: Project Summary'
+author: "Phoebe Greathouse"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: '2'
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+    theme: cosmo
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+
+## Load Packages
+Ensure reproducibility across systems. 
+```{r load packages}
+source("requirements.R")
+```
+
+
+## Data Cleaning
+Dropping unused variables, normalizing numeric features, encoding categorical variables (such as gender), and transforming the target variable into a binary format suitable for classification tasks.
+```{r data cleaning}
+source("scripts/01_data_cleaning.R")
+```
+
+
+## Principle Component Analysis
+Apply PCA to explore latent structures in the data and reduce dimensionality. These components are later used for KNN-based modeling and to understand variable correlations.
+```{r pca}
+source("scripts/02_pca.R")
+```
+
+
+## Logistic Regression
+Fit a baseline logistic regression model using all available predictors. Its performance is evaluated with confusion matrices and test error rates.
+```{r log regression}
+source("scripts/03_logistic_regression.R")
+```
+
+
+## Gradient Boosting
+Using the gbm package, implement a boosted decision tree model. Key outputs include variable importance and ROC/AUC metrics, which help us interpret model quality and feature significance.
+```{r boosting}
+source("scripts/03_boosting_model.R")
+```
+
+
+## K-Nearest Neighbors
+KNN is trained in two ways: once using PCA-transformed inputs, and once using only the most important features as determined by the boosting model. Assess performance based on accuracy and AUC.
+```{r knn}
+source("scripts/05_knn_classification.R")
+```
+
+## Results Summary & Reflections
+Below is a summary of performance metrics across models. Boosting yielded the lowest error rate, but all models had similar AUC values, suggesting comparable discriminatory power.
+
+```{r summary table}
+log_error <- 0.525
+log_auc <- 0.513
+boost_error <- 0.375
+boost_auc <- 0.510
+knn_pca_error <- 0.395
+knn_pca_auc <- 0.500
+knn_boost_error <- 0.407
+knn_boost_auc <- 0.511
+
+model_results <- data.frame(
+  Model = c("Logistic Regression", "Boosting", "KNN (PCA)", "KNN (Boosted)"),
+  `Test Error Rate` = c(log_error, boost_error, knn_pca_error, knn_boost_error),
+  AUC = c(log_auc, boost_auc, knn_pca_auc, knn_boost_auc)
+)
+
+knitr::kable(
+  model_results,
+  digits = 3,
+  caption = "Performance Comparison of Classification Models"
+)
+
+```

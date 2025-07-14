@@ -1,0 +1,29 @@
+# PCA to determine variables with the highest loadings
+library(dplyr)
+heart <- na.omit(heart)
+heart <- heart %>%
+  mutate(Gender = ifelse(Gender == "Male", 0, 1))
+
+# remove text response variable
+heart <- heart[,-24]
+
+# PCA
+heart_pca <- prcomp(heart[,-20])
+
+# PVE and cumulative PVE
+pve <- heart_pca$sdev^2 /sum(heart_pca$sdev^2)
+cum_pve <- cumsum(pve)
+
+# plot PC vs PVE and PC vs CPVE
+plot(1:length(pve), pve, type = "b", col = "pink", xlab = "Principal Component",
+     ylab = "Proportion of Variance Explained")
+plot(1:length(cum_pve), cum_pve, type = "b", col = "pink", 
+     xlab = "Principal Component", 
+     ylab = "Cumulative Proportion of Variance Explained")
+
+# how many PCs do we need in order to explain 90% of the total variation in the data?
+PC_needed <- which.min(abs(cum_pve-0.9))
+PC_needed # 6 principle components needed
+
+
+
