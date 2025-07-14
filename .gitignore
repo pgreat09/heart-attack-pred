@@ -12,6 +12,7 @@ Thumbs.db
 
 # Data files
 data/*.csv
+!data/heart.csv
 data/*.xlsx
 data/*.rds
 data/*.json
