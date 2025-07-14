@@ -58,9 +58,9 @@ performing our model fittings.
 ##### Dimension Reduction
 
 ```{r, warning = FALSE, message = FALSE, fig.show = "hold", out.width = "50%"}
-# import csv file from kaggle
+# import csv file from repo
 library(readr)
-heart <- read_csv("/Users/phoebe/Desktop/R Files - Schoolwork/Completed Projects/Heart Attack - 131, Statistical Machine Learning /Data/heart-attack-risk-prediction-dataset.csv")
+heart <- read_csv("data/heart-attack-risk-prediction-dataset.csv")
 
 # PCA to determine variables with the highest loadings
 library(dplyr)
